@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Patriot Claim Tracker</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="brand-mark" aria-hidden="true">★</div>
+      <div class="hero-copy">
+        <div class="eyebrow">Veteran Benefits Command Center</div>
+        <h1>Patriot Claim Tracker</h1>
+        <p>Local-first VA.gov dashboard. Claims, messages, documents, benefits, payments, health signals, and forms stay on this device.</p>
+      </div>
+      <div class="sync-pill" id="syncState">BETA</div>
+    </header>
+
+    <section class="overview-grid" aria-label="Current status summary">
+      <article class="stat primary">
+        <span>Current claim phase</span>
+        <strong id="phase">Waiting for VA.gov</strong>
+      </article>
+      <article class="stat">
+        <span>Days open</span>
+        <strong id="daysOpen">—</strong>
+      </article>
+      <article class="stat">
+        <span>API captures</span>
+        <strong id="apiCount">0</strong>
+      </article>
+    </section>
+
+    <section class="timeline" aria-label="Claim timeline">
+      <div class="step" data-step="Claim Received"><span></span><small>Received</small></div>
+      <div class="step" data-step="Initial Review"><span></span><small>Initial</small></div>
+      <div class="step" data-step="Evidence Gathering"><span></span><small>Evidence</small></div>
+      <div class="step" data-step="Preparation for Notification"><span></span><small>Prep</small></div>
+      <div class="step" data-step="Complete"><span></span><small>Complete</small></div>
+    </section>
+
+    <nav class="tabs" aria-label="Data sections">
+      <button class="tab active" data-tab="overview">Overview</button>
+      <button class="tab" data-tab="claims">Claims</button>
+      <button class="tab" data-tab="messages">Messages</button>
+      <button class="tab" data-tab="documents">Documents</button>
+      <button class="tab" data-tab="benefits">Benefits</button>
+      <button class="tab" data-tab="health">Health</button>
+      <button class="tab" data-tab="payments">Payments</button>
+      <button class="tab" data-tab="forms">Forms</button>
+      <button class="tab" data-tab="raw">Data</button>
+    </nav>
+
+    <section id="panel-overview" class="tab-panel active">
+      <div class="card-grid two">
+        <article class="card"><h2>Veteran profile</h2><dl id="profile"></dl></article>
+        <article class="card"><h2>Recommended checks</h2><ul id="checks"></ul></article>
+      </div>
+      <article class="card"><h2>Captured data map</h2><div id="dataMap" class="chips"></div></article>
+      <article class="card"><h2>Quick actions</h2><div id="quickActions" class="action-grid"></div></article>
+    </section>
+
+    <section id="panel-claims" class="tab-panel">
+      <article class="card"><h2>Claim summary</h2><dl id="claimSummary"></dl></article>
+      <div id="claimCards" class="card-list"></div>
+    </section>
+
+    <section id="panel-messages" class="tab-panel">
+      <article class="card section-note"><h2>Messages</h2><p>Open the My HealtheVet message folders on VA.gov, reload that page, then refresh here. Click any message/folder card to inspect details and attachment links.</p></article>
+      <div id="messageCards" class="card-list"></div>
+    </section>
+
+    <section id="panel-documents" class="tab-panel">
+      <article class="card section-note"><h2>Documents and letters</h2><p>Decision letters, evidence-upload links, PDFs, claim files, and downloadable records appear here when captured from VA.gov.</p></article>
+      <div id="documentCards" class="card-list"></div>
+    </section>
+
+    <section id="panel-benefits" class="tab-panel">
+      <article class="card"><h2>Rating and unlocked-benefit guide</h2><div id="benefitGuide" class="guide-grid"></div></article>
+      <div id="benefitCards" class="card-list"></div>
+    </section>
+
+    <section id="panel-health" class="tab-panel">
+      <article class="card section-note"><h2>Health care</h2><p>Appointments, clinic, prescription, provider, and My HealtheVet health signals belong here. Payments have a separate tab.</p></article>
+      <div id="healthCards" class="card-list"></div>
+    </section>
+
+    <section id="panel-payments" class="tab-panel">
+      <article class="card section-note"><h2>Payments</h2><p>Compensation deposits, direct-deposit signals, and payment history. Account/check-like numbers are masked in the card view.</p></article>
+      <div id="paymentCards" class="card-list"></div>
+    </section>
+
+    <section id="panel-forms" class="tab-panel">
+      <article class="card"><h2>Forms and claim prep</h2><div id="formsGuide" class="guide-grid"></div></article>
+      <div id="formCards" class="card-list"></div>
+    </section>
+
+    <section id="panel-raw" class="tab-panel">
+      <article class="card"><h2>Readable local export</h2><pre id="report">No report yet.</pre></article>
+      <article class="card"><h2>Captured API events</h2><div id="apiEvents" class="event-list"></div></article>
+      <article class="card"><h2>Full local JSON</h2><pre id="raw">{}</pre></article>
+    </section>
+
+    <footer>
+      <button id="refresh">Refresh current VA.gov tab</button>
+      <button id="copyReport" class="secondary">Copy Veteran Packet</button>
+      <button id="copyJson" class="secondary">Copy Redacted JSON</button>
+    </footer>
+  </main>
+
+  <dialog id="detailDialog">
+    <div class="dialog-card">
+      <header>
+        <div>
+          <div class="eyebrow dark" id="detailType">DETAIL</div>
+          <h2 id="detailTitle">Captured item</h2>
+        </div>
+        <button id="closeDetail" class="icon-btn" aria-label="Close details">×</button>
+      </header>
+      <div id="detailBody" class="detail-body"></div>
+      <footer class="dialog-actions">
+        <button id="copyDetail" class="secondary">Copy Item</button>
+      </footer>
+    </div>
+  </dialog>
+
+  <script src="popup.js"></script>
+</body>
+</html>
