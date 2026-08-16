@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Patriot Claim Tracker",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Local-first VA.gov veteran dashboard with polished tabs for claims, messages, documents, benefits, health, payments, forms, resources, and redacted exports.",
   "action": {
     "default_title": "Patriot Claim Tracker",
-    "default_popup": "src/popup.html"
+    "default_popup": "popup.html"
   },
   "permissions": ["activeTab", "scripting", "storage"],
   "host_permissions": [
@@ -15,23 +15,23 @@
   "content_scripts": [
     {
       "matches": ["https://www.va.gov/*"],
-      "js": ["src/content.js"],
+      "js": ["content.js"],
       "run_at": "document_start"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["src/injected.js"],
+      "resources": ["injected.js"],
       "matches": ["https://www.va.gov/*"]
     }
   ],
   "background": {
-    "service_worker": "src/background.js",
+    "service_worker": "background.js",
     "type": "module"
   },
   "icons": {
-    "16": "assets/icon16.png",
-    "48": "assets/icon48.png",
-    "128": "assets/icon128.png"
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   }
 }
