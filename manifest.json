@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Patriot Claim Tracker",
   "version": "0.3.2",
-  "description": "Local-first VA.gov veteran dashboard with polished tabs for claims, messages, documents, benefits, health, payments, forms, resources, and redacted exports.",
+  "description": "Local-first VA.gov dashboard for claims, messages, documents, benefits, health, payments, forms, and redacted exports.",
   "action": {
     "default_title": "Patriot Claim Tracker",
     "default_popup": "src/popup.html"
