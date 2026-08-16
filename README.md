@@ -2,7 +2,9 @@
 
 Patriot Claim Tracker is a local-first Chrome extension that helps veterans organize information they are already authorized to view on VA.gov into a clearer dashboard for claims, messages, documents, benefits, health, payments, forms, resources, and redacted exports.
 
-Current Chrome Web Store submission build: **v0.3.2**.
+Current Chrome Web Store submission build: **v0.3.3**.
+
+Product page: https://salt19.com/patriot-claim-tracker-download-page
 
 ## Current Features
 
@@ -31,10 +33,9 @@ Privacy policy: https://salt19.com/patriot-claim-tracker-download-page/privacy.h
 
 ## Permissions
 
-The v0.3.2 build uses a reduced Manifest V3 permission set:
+The v0.3.3 build uses a deliberately narrow Manifest V3 permission set:
 
 - `storage` — stores captured dashboard data locally in Chrome.
-- `activeTab` — supports user interaction with the currently active VA.gov tab from the extension popup.
 - `https://www.va.gov/*` — limits extension page access to VA.gov.
 
 The extension uses a declarative content script on VA.gov and a bundled local observer script to organize VA.gov page/network information. It does not execute remotely hosted JavaScript.
