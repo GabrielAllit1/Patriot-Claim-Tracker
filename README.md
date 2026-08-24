@@ -2,7 +2,7 @@
 
 Patriot Claim Tracker is a local-first Chrome extension that helps veterans organize information they are already authorized to view on VA.gov into a clearer dashboard for claims, messages, documents, benefits, health, payments, forms, resources, and redacted exports.
 
-Current Chrome Web Store submission build: **v0.3.3**.
+Current Chrome Web Store submission build: **v0.3.4**.
 
 Product page: https://salt19.com/patriot-claim-tracker-download-page
 
@@ -18,6 +18,12 @@ Product page: https://salt19.com/patriot-claim-tracker-download-page
 - Forms and claim-prep resources
 - Local JSON/report export
 - Redaction of sensitive identifiers in exports
+
+## Support and Product Links
+
+- Support continued free development: https://buymeacoffee.com/salt19
+- Product guide: https://salt19.com/patriot-claim-tracker-download-page
+- Explore SALT19: https://salt19.com
 
 ## Privacy and Security
 
